@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://online-learning-platform-rdhj.onrender.com',
+        target: 'https://learnify-hosted-backend.onrender.com',
         changeOrigin: true,
         secure: false,
       },
