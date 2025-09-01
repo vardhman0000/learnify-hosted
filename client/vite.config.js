@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
+        target: 'https://online-learning-platform-rdhj.onrender.com',
         changeOrigin: true,
         secure: false,
       },
