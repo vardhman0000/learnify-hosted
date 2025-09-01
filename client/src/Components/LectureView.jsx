@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 
 const LectureView = () => {
   const { courseId, lectureId } = useParams();
@@ -15,7 +15,7 @@ const LectureView = () => {
   useEffect(() => {
     const fetchLecture = async () => {
       try {
-        const { data } = await axios.get(`/api/lectures/${lectureId}`);
+        const { data } = await api.get(`/api/lectures/${lectureId}`);
         setLecture(data.data);
       } catch (error) {
         console.error('Error fetching lecture:', error);
@@ -28,7 +28,7 @@ const LectureView = () => {
 
   const handleMarkComplete = async () => {
     try {
-      await axios.post(
+      await api.post(
         `/api/lectures/${lectureId}/complete`,
         { courseId },
         {
@@ -60,7 +60,7 @@ const LectureView = () => {
     }));
 
     try {
-      const { data } = await axios.post(
+      const { data } = await api.post(
         `/api/lectures/${lectureId}/quiz/submit`,
         { courseId, answers: formattedAnswers },
         {

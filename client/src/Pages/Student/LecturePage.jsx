@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api";
 
 const LecturePage = () => {
   const { courseId, lectureId } = useParams();
@@ -13,7 +13,7 @@ const LecturePage = () => {
   useEffect(() => {
     const fetchLecture = async () => {
       try {
-        const { data } = await axios.get(`/api/lectures/${lectureId}`, {
+        const { data } = await api.get(`/api/lectures/${lectureId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         console.log("LOGGING DATA : ",data.data);
@@ -36,7 +36,7 @@ const LecturePage = () => {
         return;
       }
 
-      await axios.post(
+      await api.post(
         `/api/lectures/${lectureId}/complete`,
         { courseId },
         {
@@ -73,7 +73,7 @@ const LecturePage = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.post(
+      const { data } = await api.post(
         `/api/lectures/${lectureId}/quiz/submit`,
         { courseId, answers: formattedAnswers },
         {

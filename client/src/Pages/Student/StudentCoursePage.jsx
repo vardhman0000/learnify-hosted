@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../../api";
 
 const StudentCoursePage = () => {
   const { courseId } = useParams();
@@ -11,8 +11,8 @@ const StudentCoursePage = () => {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        // NOTE: You might need to configure axios to send auth tokens for private routes
-        const { data } = await axios.get(`/api/courses/${courseId}`, {
+        // NOTE: You might need to configure api to send auth tokens for private routes
+        const { data } = await api.get(`/api/courses/${courseId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setCourse(data.data.course);

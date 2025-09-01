@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../api';
 
 const API_URL = '/api/courses/';
 
@@ -9,7 +9,7 @@ const createCourse = async (courseData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post(API_URL, courseData, config);
+  const response = await api.post(API_URL, courseData, config);
   return response.data;
 };
 
@@ -20,7 +20,7 @@ const getCourses = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL, config);
+  const response = await api.get(API_URL, config);
   return response.data;
 };
 
@@ -31,7 +31,7 @@ const getCourse = async (courseId, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL + courseId, config);
+  const response = await api.get(API_URL + courseId, config);
   return response.data;
 };
 
@@ -42,7 +42,7 @@ const updateCourse = async (courseId, courseData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.put(API_URL + courseId, courseData, config);
+  const response = await api.put(API_URL + courseId, courseData, config);
   return response.data;
 };
 
@@ -53,7 +53,7 @@ const deleteCourse = async (courseId, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.delete(API_URL + courseId, config);
+  const response = await api.delete(API_URL + courseId, config);
   return response.data;
 };
 

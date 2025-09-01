@@ -1,11 +1,11 @@
-import axios from 'axios';
+import api from '../api';
 
 // Adjust this URL to your actual authentication endpoint
 const API_URL = '/api/auth/';
 
 // Login user
 const login = async (userData) => {
-  const response = await axios.post(`${API_URL}login`, userData);
+  const response = await api.post(`${API_URL}login`, userData);
 
   if (response.data && response.data.token) {
     // This assumes your backend sends a response like:

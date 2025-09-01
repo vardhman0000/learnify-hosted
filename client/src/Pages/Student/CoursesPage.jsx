@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api';
 
 const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
@@ -9,7 +9,7 @@ const CoursesPage = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const { data } = await axios.get('/api/courses');
+        const { data } = await api.get('/api/courses');
         setCourses(data.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
