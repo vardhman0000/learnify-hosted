@@ -8,7 +8,7 @@ const lectureRoutes = require('./src/routes/lectureRoutes');
 
 const app = express();
 app.use(cors({
-  origin: "https://learnify-hosted-amber.vercel.app",
+  origin: "https://learnify-hosted-frontend.onrender.com",
   credentials: true
 }));
 
